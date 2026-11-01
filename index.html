@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Interview Agent</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="bg" aria-hidden="true">
+      <div class="bg-glow bg-glow-a"></div>
+      <div class="bg-glow bg-glow-b"></div>
+      <div class="bg-grid"></div>
+    </div>
+
+    <main class="app" data-job="pm">
+      <header class="app-header">
+        <h1>AI Interview Agent</h1>
+        <button class="key-btn" id="key-btn" type="button" title="Change Gemini API key">
+          <span class="key-dot"></span><span id="key-label">API key</span>
+        </button>
+      </header>
+
+      <nav class="jobs" id="jobs" role="tablist" aria-label="Choose the role you're interviewing for"></nav>
+
+      <section class="chat" aria-live="polite">
+        <div class="chat-head">
+          <div>
+            <p class="chat-role" id="chat-role"></p>
+            <p class="chat-tagline" id="chat-tagline"></p>
+          </div>
+          <button class="ghost-btn" id="reset-btn" type="button">New session</button>
+        </div>
+        <div class="messages" id="messages"></div>
+        <form class="composer" id="composer">
+          <textarea
+            id="input"
+            rows="1"
+            placeholder="Ask a question, or say “start a mock interview”…"
+            autocomplete="off"
+          ></textarea>
+          <button type="submit" id="send-btn" aria-label="Send">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+              <path d="M4 12l16-8-6 16-2.5-6.5L4 12z" fill="currentColor" />
+            </svg>
+          </button>
+        </form>
+      </section>
+    </main>
+
+    <dialog class="key-dialog" id="key-dialog">
+      <form method="dialog" id="key-form">
+        <h2>Connect Gemini</h2>
+        <p>
+          Paste your Gemini API key to start. It's stored only in this browser and sent only to
+          Google's Gemini API.
+          <a href="https://aistudio.google.com/apikey" target="_blank" rel="noreferrer">Get a key</a>
+        </p>
+        <input id="key-input" type="password" placeholder="AIza…" autocomplete="off" spellcheck="false" required />
+        <p class="key-error" id="key-error" hidden></p>
+        <div class="dialog-actions">
+          <button type="button" class="ghost-btn" id="key-forget" hidden>Forget key</button>
+          <button type="submit" class="primary-btn" id="key-save">Save &amp; start</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
